@@ -19,8 +19,8 @@ class CreateItemStudent extends Migration
             $table->unsignedInteger('item_id');
             $table->timestamps();
 
-            $table->index(['student_id']);
-            $table->index(['item_id']);
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('item_id')->references('id')->on('items');
         });
     }
 
