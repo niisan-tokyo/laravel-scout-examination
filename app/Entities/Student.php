@@ -11,4 +11,10 @@ class Student extends Model
     {
         return $this->belongsToMany(Item::class);
     }
+
+    public function scopeSearch($query, string $search)
+    {
+        $query->where('first_name', 'like', "%${search}%")
+            ->orWhere('last_name', 'like', "%${search}%");
+    }
 }

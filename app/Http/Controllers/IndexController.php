@@ -8,10 +8,13 @@ use App\Entities\Student;
 class IndexController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::with('items')->paginate();
-
+        $query = Student::with('items');
+        if ($search = $request->input('search')) {
+            $query->search($search);
+        }
+        $students = $query->paginate();
         return view('students/index', compact('students'));
     }
 }

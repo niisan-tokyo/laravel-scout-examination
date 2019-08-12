@@ -7,7 +7,7 @@
 <body>
 <h1>生徒一覧</h1>
     <form name="student" method="GET">
-        <input type="text" name="search" />
+        <input type="text" name="search" value="{{ old('search') }}"/>
         <button type="submit">検索</button>
     </form>
     <table border="1px">
